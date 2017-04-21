@@ -1,9 +1,9 @@
 import serial
 
 x = serial.Serial('COM15')
-to_send = b'debian\ntemppwd\npython3.6 on_BBB.py\n'
+to_send = b'\x03yes HelloWorld\n'
 x.write(to_send)
 while True:
     received = x.readline()
-    if len(received) != 26:
+    if received != b'HelloWorld\r\n':
         print(received)

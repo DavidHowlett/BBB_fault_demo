@@ -2,8 +2,8 @@ import serial.tools.list_ports
 
 # connect to the BBB serial port on Windows
 x = serial.Serial('COM9', xonxoff=True)
-
 x.write(b'yes "1234567"\n')
+x.reset_input_buffer()
 
 while True:
     received = x.readline()
